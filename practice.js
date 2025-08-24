@@ -43,8 +43,12 @@
 //     console.log('Running server on port 5000')
 // })
 
-const _ = require('lodash')
+// const _ = require('lodash')
 
-const items = [1,[2,3],[4,5]]
-const flattened = _.flattenDeep(items)
-console.log(flattened)
+// const items = [1,[2,3],[4,5]]
+// const flattened = _.flattenDeep(items)
+// console.log(flattened)
+// console.log('Bas karo abhi yaar')
+
+// const path = require('path')
+// require(path.resolve(__dirname , 'content' , 'extra' , 'test.js'))
