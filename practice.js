@@ -52,3 +52,104 @@
 
 // const path = require('path')
 // require(path.resolve(__dirname , 'content' , 'extra' , 'test.js'))
+
+// console.log('first')
+// //setTimeout is asynchronous because of which it is executed later even if the second argument is 0 for the function
+// setTimeout(() => {
+//     console.log('Second task')
+// } , 0)
+// console.log('third task')
+
+// // acts like a loop whilst being asynchronous and it will be executed afterwards.
+// setInterval(() => {
+//     console.log('This is the task')
+// } , 2000)
+// console.log('i will run first')
+
+// const http = require('http')
+// const server = http.createServer((req , res) => {
+//     console.log('Hello from the server')
+//     res.end('Hello server !!!')
+// })
+// server.listen(5000 , () => {
+//     console.log('Listening...')
+// })
+
+// const http = require('http')
+// const server = http.createServer((req , res) => {
+//     setTimeout(() => {
+//          // BLOCKING CODE !!! (for all the users requesting the home page.)
+//         for(let i = 0 ; i<1000 ; i++){
+//             for(let j = 0 ; j<1000 ; j++){
+//                 console.log(i , j)
+//             }
+//         }
+//     } , 0)
+//     res.end('Home Page')
+// })
+// server.listen(5000 , () => {
+//     console.log('Listening...')
+// })
+
+// const EventEmitter = require('events')
+// const customEmitter = new EventEmitter()
+
+// customEmitter.on('response' , (name , age) => {
+//     console.log(`${name} is ${age} yrs old.`)
+// })
+
+// customEmitter.emit('response' , 'Reyansh' , 19)
+
+// const http = require('http')
+// const server = http.createServer()
+
+// server.on('request' , (req , res) => {
+//     console.log('Request Received.')
+// })
+
+// server.listen(3000 , () => { console.log('Server started at port 3000') })
+
+const {writeFileSync} = require('fs')
+// for(let i = 0 ; i<100000 ; i++){
+//     writeFileSync('./content/bigfile.txt' , 'hello world\n' , {flag: 'a'})
+// }
+
+const {createReadStream} = require('fs')
+const stream = createReadStream('./content/bigfile.txt' , {
+    encoding: 'utf8'
+});
+
+stream.on('data' , (result) => {
+    console.log(result.length/1024)
+})
+
+var fs = require('fs')
+
+const http = require('http')
+http.createServer((req , res) => {
+    // const data = fs.readFileSync('./content/bigfile.txt')
+    // res.end(data);
+    const fileStream = fs.createReadStream('./content/bigfile.txt' , 'utf8')
+    fileStream.on('data' , (result) => {
+        res.end(result)
+    })
+}).listen(3000 , () => {console.log('Server running on port: 3000')})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
